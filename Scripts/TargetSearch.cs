@@ -17,7 +17,6 @@ namespace Alkibit.Collections
         public class Target
         {
             public TargetType type;
-
             public Vector3 vector;
             [SerializeField]
             public Transform transform;
@@ -51,7 +50,10 @@ namespace Alkibit.Collections
                 case TargetType.NamedObject:
                     output = FindGameObjectByName(name).transform.position; break;
                 case TargetType.Mouse:
-                    output = InputHandler.Mouse.GetWorldPosition2D(); break;
+                    Vector3 x = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    x.z = 0;
+                    output = x; 
+                    break;
             }
 
             return output;
@@ -70,7 +72,10 @@ namespace Alkibit.Collections
                 case TargetType.NamedObject:
                     output = FindGameObjectByName(target.name).transform.position; break;
                 case TargetType.Mouse:
-                    output = InputHandler.Mouse.GetWorldPosition2D(); break;
+                    Vector3 x = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    x.z = 0;
+                    output = x;
+                    break;
             }
 
             return output;

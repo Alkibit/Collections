@@ -1,9 +1,9 @@
-![1.2.0-stable](https://img.shields.io/badge/AlkibitLLC.Collections-1.2.0--stable-green)
+![1.2.0-stable](https://img.shields.io/badge/Alkibit.Collections-1.2.0--stable-green)
 
-Some useful stuff, used in Alkibit packages and projects.
+Some useful stuff, used in unity Alkibit packages and projects.
 
 ## Requirements
-- AlkibitLLC.Input
+None :), apart from Unity, of course.
 
 ## Features
 
@@ -85,7 +85,7 @@ The target to search:
 - `Vector3 vector3` - The vector
 - `Transform transform` - The transform
 - `string name` - The name of the object to search
-- `Vector3 GetPosition()` - Gets the position of the target
+- `Vector3 position {get;}` - The position of the target
 
 `Vector3 GetTargetPosition(Target target)` or `Vector3 GetTargetPosition(TargetType type, Vector3 vector, Transform transform, string name)`
 

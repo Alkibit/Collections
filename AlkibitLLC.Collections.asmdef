@@ -1,9 +1,7 @@
 {
     "name": "Alkibit.Collections",
     "rootNamespace": "",
-    "references": [
-        "GUID:3a619e70b94532547a191c60a262bd62"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
