@@ -6,13 +6,28 @@ namespace Alkibit.Collections
     public class UpdateManager : MonoBehaviour
     {
         [Header("UpdateManager")]
+        public bool isPaused;
+        public bool controlPause = false;
         public static bool IsPaused { get; private set; }
         public static UpdateManager Instance { get; private set; }
 
-        private void Start() => Instance = this;
+        private void Start()
+        {
+            Instance = this;
+            isPaused = IsPaused;
+        }
 
         private void Update()
         {
+            if (controlPause)
+            {
+                IsPaused = isPaused;
+            }
+            else
+            {
+                isPaused = IsPaused;
+            }
+
             if (IsPaused) return;
 
             foreach(MonoBehaviour behaviour in FindObjectsByType<MonoBehaviour>())

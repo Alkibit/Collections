@@ -1,0 +1,17 @@
+{
+    "name": "Alkibit.Collections.Demo",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f2f089dde99e4d4428a4dc73017e1a6d",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

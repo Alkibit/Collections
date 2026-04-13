@@ -8,6 +8,7 @@ namespace Alkibit.Collections
     {
         [Header("Timer Data")]
         public float startTime;
+        [HideInInspector]
         public bool isLooping;
         public float timeLeft;
         [Space(8)]

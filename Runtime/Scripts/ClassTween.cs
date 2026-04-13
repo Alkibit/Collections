@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Alkibit.Collections.Tween
+namespace Alkibit.Collections
 {
     [Serializable]
     public enum Tween
@@ -49,22 +49,6 @@ namespace Alkibit.Collections.Tween
             }
 
             return start + change;
-        }
-
-        public static void TweenTransform(Transform transform, Vector3 target, float speed, Tween tween)
-        {
-            transform.position = TweenVector(transform.position, target, speed, tween);
-        }
-
-        public static Color TweenColor(Color start, Color target, float speed, Tween tween)
-        {
-            Color final = new(
-                TweenFloat(start.r, target.r, speed, tween),
-                TweenFloat(start.g, target.g, speed, tween),
-                TweenFloat(start.b, target.b, speed, tween)
-                );
-
-            return final;
         }
     }
 }

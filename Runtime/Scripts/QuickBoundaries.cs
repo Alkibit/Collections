@@ -6,19 +6,19 @@ namespace Alkibit.Physics
     public static class QuickBoundaries
     {
         [Serializable]
-        public class BoxBoundary
+        public struct BoxBoundary
         {
-            public Vector3 size = new(2, 2, 0);
+            public Vector3 size;
         }
 
         [Serializable]
-        public class SphereBoundary
+        public struct SphereBoundary
         {
-            public float radius = 1;
+            public float radius;
         }
 
         [Serializable]
-        public class Boundary
+        public struct Boundary
         {
             public enum BoundaryType
             {
@@ -26,9 +26,9 @@ namespace Alkibit.Physics
                 Box,
                 Sphere,
             }
-            public BoxBoundary box = new();
-            public SphereBoundary sphere = new();
-            public BoundaryType type = BoundaryType.Box;
+            public BoxBoundary box;
+            public SphereBoundary sphere;
+            public BoundaryType type;
         }
 
         public static bool IsInsideBoundary(Vector3 position, Vector3 point, Boundary boundary)
@@ -40,7 +40,7 @@ namespace Alkibit.Physics
                 case Boundary.BoundaryType.Sphere:
                     return IsInsideSphere(position, point, boundary.sphere);
                 case Boundary.BoundaryType.None:
-                    return true;
+                    return false;
                 default:
                     break;
             }

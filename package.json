@@ -1,0 +1,15 @@
+{
+    "name": "com.alkibit.collections",
+    "version": "1.0.0",
+    "displayName": "Alkibit Collections",
+    "description": "Some useful unity stuff used in Alkibit packages and projects.",
+    "unity": "6000.0",
+    "dependencies": {
+        "com.unity.textmeshpro": "3.0.6"
+    },
+    "author": {
+        "name": "Roman Slobodchikov",
+        "email": "roman@alkibit.com",
+        "url": "https://github.com/R0fael"
+    }
+}

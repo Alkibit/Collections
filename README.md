@@ -1,11 +1,21 @@
-![1.2.0-stable](https://img.shields.io/badge/Alkibit.Collections-1.2.0--stable-green)
+![version](https://img.shields.io/badge/Alkibit.Collections-1.0.0--stable-green)
 
-Some useful stuff, used in unity Alkibit packages and projects.
+Some useful unity stuff used in Alkibit packages and projects.
 
 ## Requirements
-None :), apart from Unity, of course.
+- The demo requires `Unity.TextMeshPro`, but if you don't use the demo, you don't need it
 
 ## Features
+
+- [`Curves`](#curves)
+- [`IOnUpdate`](#ionupdate)
+- [`QuickBoundaries`](#quickboundaries)
+- [`RandomizedArrayExtender`](#randomizedarrayextender)
+- [`TargetSearch`](#targetsearch)
+- [`TimeFormatting`](#timeformatting)
+- [`TimerData`](#timerdata)
+- [`ClassTween`](#classtween)
+- [`UpdateManager`](#updatemanager)
 
 ### `Curves`
 
@@ -25,15 +35,12 @@ A curve with a capability of an `AnimationCurve`:
 - `void SetCurve()` - Sets `curve` based on `points`
 
 ---
-### `Miscellaneous`
+### `IOnUpdate`
+Updates every frame by `UpdateManager` when is unpaused
 
-`enum Vector3Boolean`
+`void OnUpdate()`
 
-An enum with 3 booleans
-
-`enum Vector2Boolean`
-
-An enum 2 booleans
+The function that is called every frame by `UpdateManager` when is unpaused
 
 ---
 ### `QuickBoundaries`
@@ -66,6 +73,14 @@ Gets if a point is in a boundary that is at the `position`
 Draws Gizmos of the boundary
 
 ---
+### `RandomizedArrayExtender`
+A useful utilite to get a random item from an array or a list
+
+`.GetRandomItem()`
+
+Returns a random item from an array or a list
+
+---
 ### `TargetSearch`
 
 A static class to search targets
@@ -92,6 +107,15 @@ The target to search:
 Gets the position of the target
 
 ---
+### `TimeFormatting`
+
+Formats time into a string dinamically
+
+`string FormatTime(float time, bool showMilliseconds = false)`
+
+Formats the time into a string, the inputs are self-explanatory
+
+---
 ### TimerData
 
 A class, that is a timer
@@ -99,3 +123,53 @@ A class, that is a timer
 `float startTime`
 `float time left`
 `bool isLooping`
+
+---
+### ClassTween
+
+A class to tween values for smooth animations using code
+
+`enum Tween`
+
+**This is outside of this class, but in the same namespace.** The type of the tween:
+- `Linear` - the speed is the same during the whole tween
+- `Logarithmic` - the speed is high at the beggining, but low at the end
+- `Exponential` - the speed is low at the beggining, but high at the end
+
+`Vector3 TweenVector(Vector3 start, Vector3 target, float speed, Tween tween)`
+Tweens a vector from the start to the target with the speed and tween type
+
+`float TweenFloat(float start, float target, float speed, Tween tween)`
+Tweens a float from the start to the target with the speed and tween type
+
+---
+### UpdateManager
+This class updates every `IOnUpdate` and simulates 2d physics using scripted updates.
+
+`IsPaused`
+
+The state of the game, and is readonly
+
+`UpdateManager Instance`
+
+The current instance of the `UpdateManager`
+
+`bool isPaused`
+
+The inspector variable to show the state of the game, but changes it is `controlPause` is set to true.
+
+`bool control pause`
+
+Allows to control the state of the game using `isPaused variable`
+
+`void Pause()`
+
+Pauses the game
+
+`void Resume()`
+
+Resumes the game
+
+`void TogglePause`
+
+Toggles the pause state of the game
