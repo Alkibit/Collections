@@ -30,9 +30,9 @@ namespace Alkibit.Collections
 
             if (IsPaused) return;
 
-            foreach(MonoBehaviour behaviour in FindObjectsByType<MonoBehaviour>())
+            foreach (MonoBehaviour behaviour in FindObjectsByType<MonoBehaviour>())
             {
-                if(behaviour.GetType().GetInterfaces().Contains(typeof(IOnUpdate)))
+                if (behaviour.GetType().GetInterfaces().Contains(typeof(IOnUpdate)))
                 {
                     if (!behaviour.enabled) continue;
                     ((IOnUpdate)behaviour).OnUpdate();

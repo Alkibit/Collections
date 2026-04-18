@@ -6,12 +6,10 @@ namespace Alkibit.Collections
     [Serializable]
     public class TimerData
     {
-        [Header("Timer Data")]
         public float startTime;
-        [HideInInspector]
         public bool isLooping;
+        [HideInInspector]
         public float timeLeft;
-        [Space(8)]
         public float speed = 1f;
 
         public bool Tick(float time, Action onEnd = null)
@@ -39,10 +37,5 @@ namespace Alkibit.Collections
         {
             return 0 < timeLeft && timeLeft < startTime;
         }
-    }
-
-    [Serializable]
-    public class WaitTimerData : TimerData
-    {
     }
 }

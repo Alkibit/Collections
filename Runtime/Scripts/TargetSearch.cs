@@ -1,10 +1,13 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Alkibit.Collections
 {
     public static class TargetSearch
     {
+        private static Dictionary<string, Transform> namedObjectCache = new();
+
         public enum TargetType
         {
             Vector,
@@ -14,7 +17,7 @@ namespace Alkibit.Collections
         }
 
         [Serializable]
-        public class Target
+        public struct Target
         {
             public TargetType type;
             public Vector3 vector;
@@ -23,6 +26,23 @@ namespace Alkibit.Collections
             public string name;
 
             public Vector3 position { get { return GetTargetPosition(this); } }
+
+            public override string ToString()
+            {
+                switch (type)
+                {
+                    case TargetType.Vector:
+                        return $"vector: {vector}";
+                    case TargetType.Transform:
+                        return $"transform: {transform.name}";
+                    case TargetType.NamedObject:
+                        return $"named object: {name}";
+                    case TargetType.Mouse:
+                        return "mouse position";
+                    default:
+                        return base.ToString();
+                }
+            }
         }
 
         private static GameObject FindGameObjectByName(string name)
@@ -37,48 +57,40 @@ namespace Alkibit.Collections
             return null;
         }
 
-        public static Vector3 GetTargetPosition(TargetType type, Vector3 vector, Transform transform, string name)
-        {
-            Vector3 output = Vector3.zero;
-
-            switch (type)
-            {
-                case TargetType.Vector:
-                    output = vector; break;
-                case TargetType.Transform:
-                    output = transform.position; break;
-                case TargetType.NamedObject:
-                    output = FindGameObjectByName(name).transform.position; break;
-                case TargetType.Mouse:
-                    Vector3 x = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    x.z = 0;
-                    output = x; 
-                    break;
-            }
-
-            return output;
-        }
-
         public static Vector3 GetTargetPosition(Target target)
         {
-            Vector3 output = Vector3.zero;
-
             switch (target.type)
             {
                 case TargetType.Vector:
-                    output = target.vector; break;
+                    return target.vector;
                 case TargetType.Transform:
-                    output = target.transform.position; break;
+                    return target.transform.position;
                 case TargetType.NamedObject:
-                    output = FindGameObjectByName(target.name).transform.position; break;
+                    if (namedObjectCache.TryGetValue(target.name, out Transform cachedTransform))
+                    {
+                        return cachedTransform.position;
+                    }
+                    else
+                    {
+                        GameObject foundObject = FindGameObjectByName(target.name);
+                        if (foundObject != null)
+                        {
+                            namedObjectCache[target.name] = foundObject.transform;
+                            return foundObject.transform.position;
+                        }
+                        else
+                        {
+                            Debug.LogAssertion($"TargetSearch: No GameObject found with name '{target.name}'");
+                            return Vector3.zero;
+                        }
+                    }
                 case TargetType.Mouse:
-                    Vector3 x = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    x.z = 0;
-                    output = x;
-                    break;
+                    Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    mousePosition.z = 0;
+                    return mousePosition;
             }
-
-            return output;
+            Debug.LogAssertion($"TargetSearch: Something went wrong searching '{target}'");
+            return Vector3.zero;
         }
     }
 }

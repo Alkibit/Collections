@@ -1,27 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Alkibit.Collections.Demo
+namespace Alkibit.Collections.Samples
 {
     public class ObjectSpawner : MonoBehaviour, IOnUpdate
     {
 
         [System.Serializable]
-        public class SpawningData
+        public struct SpawningData
         {
             public GameObject prefab;
             public int times;
-
-            public SpawningData(SpawningData data)
-            {
-                prefab = data.prefab;
-                times = data.times;
-            }
         }
 
         public SpawningData[] data;
 
-        public List<GameObject> prefabs;
+        private List<GameObject> prefabs;
         public Transform points;
 
         public Curve curve;

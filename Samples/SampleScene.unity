@@ -801,22 +801,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 616883608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93683324acf886f43b0a83a3029c7e9f, type: 3}
+  m_Script: {fileID: 11500000, guid: cbc2286b05dece040bf759804bba0cda, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Alkibit.Collections.Demo::Alkibit.Templates.Movement.ObjectFollowing
+  m_EditorClassIdentifier: Alkibit.Collections.Samples::Alkibit.Collections.Samples.ObjectFollowing2D
   target:
     type: 3
     vector: {x: 0, y: 0, z: 0}
     transform: {fileID: 0}
     name: 
   tween: 1
-  speed: 1
-  offset: {x: 0, y: 0, z: 0}
+  speed: 2
+  offset: {x: 0, y: 0}
   boundary:
     box:
-      size: {x: 2, y: 2, z: 0}
+      size: {x: 0, y: 0, z: 0}
     sphere:
-      radius: 1
+      radius: 0
     type: 0
 --- !u!1 &636624565
 GameObject:
@@ -1881,7 +1881,61 @@ MonoBehaviour:
   curve:
     curve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -0.5
+        outSlope: -0.5
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0.5
+        inSlope: -0.25
+        outSlope: -0.25
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 2
+        value: 0.5
+        inSlope: -0.125
+        outSlope: -0.125
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 3
+        value: 0.25
+        inSlope: -0.1625
+        outSlope: -0.1625
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 5
+        value: 0.1
+        inSlope: 0.0024999976
+        outSlope: 0.0024999976
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 10
+        value: 0.5
+        inSlope: 0.08
+        outSlope: 0.08
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

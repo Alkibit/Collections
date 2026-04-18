@@ -1,15 +1,15 @@
-using Alkibit.Collections;
 using Alkibit.Physics;
 using UnityEngine;
 
-namespace Alkibit.Collections.Demo
+namespace Alkibit.Collections.Samples
 {
-    public class ObjectFollowing : MonoBehaviour, IOnUpdate
+    public class TargetFollowing : MonoBehaviour, IOnUpdate
     {
 
         public TargetSearch.Target target;
         public Tween tween;
         public float speed = 1f;
+
         public Vector3 offset;
         public QuickBoundaries.Boundary boundary = new();
 

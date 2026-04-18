@@ -1,22 +1,31 @@
-![version](https://img.shields.io/badge/Alkibit.Collections-1.0.0--stable-green)
+![version](https://img.shields.io/badge/Alkibit.Collections-1.0.1--stable-green)
 
-Some useful unity stuff used in Alkibit packages and projects.
+## About
+This is a unity package, that is used by Alkibit's other packages and games.
+
+### Table of contents
+- [Requirements](#requirements)
+- [Features](#features)
+    - [`Curves`](#curves)
+    - [`IOnUpdate`](#ionupdate)
+    - [`QuickBoundaries`](#quickboundaries)
+    - [`RandomizedArrayExtender`](#randomizedarrayextender)
+    - [`TargetSearch`](#targetsearch)
+    - [`TimeFormatting`](#timeformatting)
+    - [`TimerData`](#timerdata)
+    - [`ClassTween`](#classtween)
+    - [`UpdateManager`](#updatemanager)
+- [Samples](#samples)
+    - [`DespawnableObject`](#despawnableobject)
+    - [`ObjectSpawner`](#objectspawner)
+    - [`RotateTowards`](#rotatetowards)
+    - [`TargetFollowing`](#targetfollowing)
+    - [`Timer`](#timer)
 
 ## Requirements
-- The demo requires `Unity.TextMeshPro`, but if you don't use the demo, you don't need it
+- The samples require `Unity.TextMeshPro`
 
 ## Features
-
-- [`Curves`](#curves)
-- [`IOnUpdate`](#ionupdate)
-- [`QuickBoundaries`](#quickboundaries)
-- [`RandomizedArrayExtender`](#randomizedarrayextender)
-- [`TargetSearch`](#targetsearch)
-- [`TimeFormatting`](#timeformatting)
-- [`TimerData`](#timerdata)
-- [`ClassTween`](#classtween)
-- [`UpdateManager`](#updatemanager)
-
 ### `Curves`
 
 `CurvePoint`
@@ -121,8 +130,14 @@ Formats the time into a string, the inputs are self-explanatory
 A class, that is a timer
 
 `float startTime`
+
+The time that you have at the start of the timer
 `float time left`
+
+The time you have left, mainly used as a display
 `bool isLooping`
+
+Does a timer restart when it finishes? It doesn't appear in inspector
 
 ---
 ### ClassTween
@@ -173,3 +188,104 @@ Resumes the game
 `void TogglePause`
 
 Toggles the pause state of the game
+
+---
+
+## Samples
+
+### `DespawnableObject`
+
+Destroys an object after some time
+
+`TimerData timer`
+
+The timer to be destroyed
+
+---
+### ObjectSpawner
+
+Spawns objects using Curves and a parent GameObject
+
+`SpawningData`
+
+The spawn pool for one prefab
+- `GameObject prefab` - that is the prefab
+- `int times` - how much should it appear
+
+`SpawningData[] data`
+
+The data about spawning
+
+`Transform points`
+
+The parent GameObject that has the points as its children
+
+`Curve curve`
+
+The curve of the time between the rounds
+
+`public int round`
+
+Round count
+
+---
+### `RotateTowards`
+
+Rotates towards a target
+
+`Target target`
+
+The target to rotate towards
+
+`float offset`
+
+The offset of turning
+
+---
+### TargetFollowing
+
+This script makes an object follow `Target` using a `Tween`. 
+It has theese variations:
+- `TargetFollowing2D` - Does not move Z axis
+- `PhysicsTargetFollowing` - Uses `Rigidbody` component to be moved around
+- `PhysicsTargetFollowing2D` - Uses `Rigidbody2D` component to be moved around and doesn't move Z axis
+- `GridTargetFollowing2D` - Is snapped to grid and doesn't move automatically unless `Move()` is called. It doesn't has `tween` and `offset`, but has `frequency`, that defines how frequently will it move on `Move()`
+
+Every variation has theese fields:
+
+`Target target`
+
+The target to follow
+
+`Tween tween`
+
+The tween to use
+
+`float speed`
+
+The speed of movement
+
+`Vector3 offset`/`Vector2 offset`
+
+The offset of the move
+
+---
+### `Timer`
+
+A basic `MonoBehaviour` implementation of `TimerData` with an ability to display time onto `TextMeshProUGUI`
+
+`TextMeshProUGUI text`
+
+The text component to cast the time to
+
+`bool showMilliseconds`
+
+To show milliseconds or not
+
+`TimerData timer`
+
+The timer
+
+`UnityEvent onTimerEnd`
+
+Is being called when timer reaches zero

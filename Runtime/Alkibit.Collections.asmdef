@@ -1,6 +1,6 @@
 {
     "name": "Alkibit.Collections",
-    "rootNamespace": "",
+    "rootNamespace": "Alkibit.Collections",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Alkibit.Collections
 {
     public interface IOnUpdate

@@ -1,7 +1,6 @@
-using Alkibit.Collections;
 using UnityEngine;
 
-namespace Alkibit.Collections.Demo
+namespace Alkibit.Collections.Samples
 {
     public class RotateTowards : MonoBehaviour, IOnUpdate
     {

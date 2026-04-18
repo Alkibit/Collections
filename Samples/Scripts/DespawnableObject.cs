@@ -1,17 +1,16 @@
-using Alkibit.Collections;
 using UnityEngine;
 
-namespace Alkibit.Collections.Demo
+namespace Alkibit.Collections.Samples
 {
     public class DespawnableObject : MonoBehaviour, IOnUpdate
     {
-        public WaitTimerData timer;
+        public TimerData timer;
 
         private void Start() => timer.Reset();
 
         public void OnUpdate()
         {
-            if (timer.Tick(Time.deltaTime)) Destroy(gameObject); 
+            if (timer.Tick(Time.deltaTime)) Destroy(gameObject);
         }
     }
 }

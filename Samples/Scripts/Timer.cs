@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Alkibit.Collections.Demo
+namespace Alkibit.Collections.Samples
 {
     public class Timer : MonoBehaviour, IOnUpdate
     {
@@ -19,7 +19,7 @@ namespace Alkibit.Collections.Demo
         public void OnUpdate()
         {
             timer.Tick(Time.deltaTime, onTimerEnd.Invoke);
-            if(text != null) text.text = TimeFormatting.FormatTime(timer.timeLeft, showMilliseconds);
+            if (text != null) text.text = TimeFormatting.FormatTime(timer.timeLeft, showMilliseconds);
         }
     }
 }
