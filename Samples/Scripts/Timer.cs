@@ -8,7 +8,7 @@ namespace Alkibit.Collections.Samples
     {
         public TextMeshProUGUI text;
         public bool showMilliseconds;
-        public TimerData timer;
+        public FlexibleTimer timer;
         public UnityEvent onTimerEnd;
 
         private void Start()
@@ -18,8 +18,14 @@ namespace Alkibit.Collections.Samples
 
         public void OnUpdate()
         {
-            timer.Tick(Time.deltaTime, onTimerEnd.Invoke);
-            if (text != null) text.text = TimeFormatting.FormatTime(timer.timeLeft, showMilliseconds);
+            if (timer.Tick(Time.deltaTime))
+            {
+                onTimerEnd.Invoke();
+            }
+            if (text != null)
+            {
+                text.text = TimeFormatting.FormatTime(timer.time, showMilliseconds);
+            }
         }
     }
 }

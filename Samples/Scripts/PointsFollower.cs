@@ -17,7 +17,7 @@ namespace Alkibit.Collections.Samples
         public UnityEvent onFinish;
         public LoopType loopType;
 
-        public TimerData timer;
+        public LoopingTimer timer;
 
         private int pointIndex;
         private Transform[] allPoints;
@@ -57,9 +57,6 @@ namespace Alkibit.Collections.Samples
 
         void NextPoint()
         {
-            if (!timer.IsTicking())
-                timer.Reset();
-
             if (!timer.Tick(Time.deltaTime)) return;
 
             switch (loopType)

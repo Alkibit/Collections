@@ -4,7 +4,7 @@ namespace Alkibit.Collections.Samples
 {
     public class DespawnableObject : MonoBehaviour, IOnUpdate
     {
-        public TimerData timer;
+        public Collections.Timer timer;
 
         private void Start() => timer.Reset();
 

@@ -1,0 +1,16 @@
+{
+    "name": "Alkibit.Collections.Editor",
+    "rootNamespace": "",
+    "references": [
+        "Alkibit.Collections"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

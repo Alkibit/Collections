@@ -15,7 +15,7 @@ namespace Alkibit.Collections.Samples
 
         public SpawningData[] data;
 
-        private List<GameObject> prefabs;
+        private List<GameObject> prefabs = new();
         public Transform points;
 
         public Curve curve;
@@ -25,14 +25,13 @@ namespace Alkibit.Collections.Samples
 
         public int round;
 
-        private TimerData timer;
+        private LoopingTimer timer;
 
         private void Start()
         {
-            timer = new TimerData();
+            timer = new LoopingTimer();
             timer.Reset();
             round = 0;
-            timer.isLooping = true;
             timer.startTime = curve.curve.Evaluate(round);
 
             foreach (SpawningData sd in data)
@@ -44,7 +43,7 @@ namespace Alkibit.Collections.Samples
 
         public void OnUpdate()
         {
-            if (usesTimer) timer.Tick(Time.deltaTime, Spawn);
+            if (usesTimer) if(timer.Tick(Time.deltaTime)) Spawn();
         }
 
         void Spawn()

@@ -1,4 +1,4 @@
-![version](https://img.shields.io/badge/Alkibit.Collections-1.0.1--stable-green)
+![version](https://img.shields.io/badge/Alkibit.Collections-1.1.0--stable-green)
 
 ## About
 This is a unity package, that is used by Alkibit's other packages and games.
@@ -125,19 +125,28 @@ Formats time into a string dinamically
 Formats the time into a string, the inputs are self-explanatory
 
 ---
-### TimerData
+### Timer
 
 A class, that is a timer
 
 `float startTime`
 
 The time that you have at the start of the timer
-`float time left`
+`float time`
 
-The time you have left, mainly used as a display
-`bool isLooping`
+The current time
 
-Does a timer restart when it finishes? It doesn't appear in inspector
+#### `LoopingTimer`
+
+This is a timer class that calls `Reset()` when timer ends
+
+#### `UptimeTimer`
+
+This is a timer that counts up instead of down
+
+#### `FlexibleTimer`
+
+A timer that can be modified with its variables, eg. make it Uptime or make it a loop.
 
 ---
 ### ClassTween

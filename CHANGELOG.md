@@ -1,3 +1,8 @@
+## [1.1.0] 2026.05.09
+### Timers rework
+- Changed `Timer` class
+- Added more timers
+
 ## [1.0.1] 2026.04.18
 ### Refactoring and caching
 - Renamed `Alkibit.Collections.Demo` to `Alkibit.Collections.Samples`
